@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Echoes - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <h1>Emotional Echoes</h1>
+            <div class="user-info">
+                <span id="username-display"></span>
+                <button id="logout-btn" class="btn small">Log Out</button>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="about">What is EE?</button>
+            <button class="tab-btn" data-tab="insights">Intelligent Insights</button>
+            <button class="tab-btn" data-tab="mood-check">Mood Check</button>
+            <button class="tab-btn" data-tab="timeline">Your Timeline</button>
+            <button class="tab-btn" data-tab="meditation">Guided Meditation</button>
+        </nav>
+
+        <main class="dashboard">
+            <section id="about" class="tab-content active">
+                <h2>What is Emotional Echoes?</h2>
+                <p>Emotional Echoes is a mindfulness tool designed to help you track and understand your emotional patterns.</p>
+                <p>By logging your moods regularly, you create a personal emotional timeline that reveals patterns and triggers.</p>
+                <p>Our system provides insights based on your entries, helping you develop greater emotional awareness and resilience.</p>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3>Daily Check-ins</h3>
+                        <p>Log your mood and thoughts throughout the day.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Smart Insights</h3>
+                        <p>Receive personalized insights based on your emotional patterns.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Mindfulness Tools</h3>
+                        <p>Access guided meditations tailored to your current emotional state.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="insights" class="tab-content">
+                <h2>Intelligent Insights</h2>
+                <div class="insight-container">
+                    <div id="primary-insight" class="insight-card primary">
+                        <h3>Your Daily Insight</h3>
+                        <p id="daily-insight-text">Loading your personalized insight...</p>
+                    </div>
+                    <div class="insight-grid">
+                        <div class="insight-card">
+                            <h3>Emotional Patterns</h3>
+                            <p id="pattern-insight">Analyzing your recent entries...</p>
+                        </div>
+                        <div class="insight-card">
+                            <h3>Weekly Summary</h3>
+                            <p id="weekly-insight">Generating your weekly summary...</p>
+                        </div>
+                        <div class="insight-card">
+                            <h3>Growth Opportunities</h3>
+                            <p id="growth-insight">Identifying growth opportunities...</p>
+                        </div>
+                    </div>
+                    <button id="refresh-insights" class="btn secondary">Refresh Insights</button>
+                </div>
+            </section>
+
+            <section id="mood-check" class="tab-content">
+                <h2>Mood Check</h2>
+                <form id="mood-form">
+                    <div class="mood-input">
+                        <label for="mood-slider">How are you feeling right now?</label>
+                        <div class="slider-container">
+                            <input type="range" id="mood-slider" min="1" max="10" value="5">
+                            <div class="slider-labels">
+                                <span>😞</span>
+                                <span>😐</span>
+                                <span>😊</span>
+                            </div>
+                        </div>
+                        <div id="mood-value">5/10</div>
+                    </div>
+
+                    <div class="mood-emoji">
+                        <label>Select the emoji that best matches your mood:</label>
+                        <div class="emoji-grid">
+                            <button type="button" class="emoji-btn" data-emoji="😊">😊</button>
+                            <button type="button" class="emoji-btn" data-emoji="😢">😢</button>
+                            <button type="button" class="emoji-btn" data-emoji="😡">😡</button>
+                            <button type="button" class="emoji-btn" data-emoji="😴">😴</button>
+                            <button type="button" class="emoji-btn" data-emoji="😰">😰</button>
+                            <button type="button" class="emoji-btn" data-emoji="🤔">🤔</button>
+                        </div>
+                        <input type="hidden" id="selected-emoji" value="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mood-notes">What's on your mind?</label>
+                        <textarea id="mood-notes" rows="4" placeholder="Add notes about your current mood..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary">Save Mood Entry</button>
+                </form>
+            </section>
+
+            <section id="timeline" class="tab-content">
+                <h2>Your Timeline</h2>
+                <div class="timeline-container">
+                    <div id="mood-entries" class="timeline-entries">
+                        <!-- Entries will be populated by JavaScript -->
+                    </div>
+                    <div class="timeline-empty" id="empty-timeline">
+                        <p>No mood entries yet. Start by adding your first mood check.</p>
+                        <button class="btn secondary tab-link" data-tab="mood-check">Add Mood Entry</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="meditation" class="tab-content">
+                <h2>Guided Meditation</h2>
+                <div class="meditation-container">
+                    <div class="meditation-card">
+                        <h3>5-Minute Breathing Exercise</h3>
+                        <p>A quick meditation to center yourself and calm your mind.</p>
+                        <div class="meditation-timer">
+                            <div id="timer-display">5:00</div>
+                            <div class="timer-controls">
+                                <button id="start-timer" class="btn secondary">Start</button>
+                                <button id="pause-timer" class="btn secondary" disabled>Pause</button>
+                                <button id="reset-timer" class="btn secondary" disabled>Reset</button>
+                            </div>
+                        </div>
+                        <div class="breathing-guide">
+                            <div id="breathing-circle"></div>
+                            <div id="breathing-text">Breathe in...</div>
+                        </div>
+                    </div>
+                    <div class="meditation-recommendations">
+                        <h3>Recommended for You</h3>
+                        <ul id="meditation-list">
+                            <!-- Will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="reminder" class="reminder">
+            <div class="reminder-content">
+                <h3>Time to check in?</h3>
+                <p>It's been a while since your last mood entry. How are you feeling now?</p>
+                <div class="reminder-actions">
+                    <button id="reminder-check" class="btn primary tab-link" data-tab="mood-check">Check In</button>
+                    <button id="reminder-dismiss" class="btn secondary">Dismiss</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Emotional Echoes</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

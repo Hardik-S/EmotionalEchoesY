@@ -1,0 +1,580 @@
+/* Base styles */
+:root {
+    --primary: #7b9eae;
+    --primary-light: #a7c4d2;
+    --primary-dark: #5a7d8c;
+    --secondary: #e8b7a2;
+    --secondary-light: #f2d4c7;
+    --accent: #d4a5b9;
+    --text: #333;
+    --background: #f8f4f1;
+    --card-bg: #fff;
+    --error: #e74c3c;
+    --success: #2ecc71;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: in;
+    color: var(--text);
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.primary {
+    background-color: var(--primary);
+}
+
+.btn.secondary {
+    background-color: var(--secondary);
+}
+
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#username-display {
+    font-weight: bold;
+}
+
+/* Welcome section */
+.welcome {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Tab navigation */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.tab-btn:hover {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.tab-btn.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Feature cards */
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+/* Insights section */
+.insight-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.insight-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.insight-card.primary {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.insight-card.primary h3 {
+    color: white;
+}
+
+.insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Mood check section */
+.mood-input {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.slider-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem auto;
+}
+
+#mood-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #e74c3c, #f1c40f, #2ecc71);
+    outline: none;
+}
+
+#mood-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#mood-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+#mood-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.mood-emoji {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    max-width: 400px;
+    margin: 1rem auto;
+}
+
+.emoji-btn {
+    background-color: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.emoji-btn:hover {
+    background-color: var(--primary-light);
+    transform: scale(1.1);
+}
+
+.emoji-btn.selected {
+    background-color: var(--primary);
+    border-color: var(--primary-dark);
+}
+
+/* Timeline section */
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-entry {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    position: relative;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.entry-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.entry-emoji {
+    font-size: 1.5rem;
+}
+
+.entry-mood {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mood-level {
+    font-weight: bold;
+}
+
+.entry-notes {
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.timeline-empty {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Meditation section */
+.meditation-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .meditation-container {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+.meditation-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.meditation-timer {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+#timer-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.breathing-guide {
+    position: relative;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+#breathing-circle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    transition: transform 4s ease;
+}
+
+.inhale {
+    transform: scale(1.5);
+}
+
+.exhale {
+    transform: scale(1);
+}
+
+#breathing-text {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.meditation-recommendations {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+#meditation-list {
+    list-style: none;
+}
+
+#meditation-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+#meditation-list li:last-child {
+    border-bottom: none;
+}
+
+/* Reminder popup */
+.reminder {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 300px;
+    z-index: 100;
+    animation: slideIn 0.5s;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.reminder.active {
+    display: block;
+}
+
+.reminder-content {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border-left: 4px solid var(--primary);
+}
+
+.reminder-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    color: #666;
+    border-top: 1px solid #eee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tabs {
+        justify-content: center;
+    }
+    
+    .tab-btn {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+    
+    .insight-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .emoji-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
