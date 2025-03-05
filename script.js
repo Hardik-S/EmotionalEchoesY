@@ -2,6 +2,7 @@
 function checkLogin() {
     const currentUser = localStorage.getItem('currentUser');
     const path = window.location.pathname;
+    setupDashboard();
     
     // Routing flow: Login -> Headspace -> Home
     if (path.includes('index.html') && currentUser) {
