@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotional Echoes</title>
+    <title>Emotional Echoes - Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,9 +23,8 @@
                 </div>
             </section>
 
-            <div id="login-modal" class="modal">
+            <div id="login-modal" class="modal active">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
                     <h2>Log In</h2>
                     <form id="login-form">
                         <div class="form-group">
@@ -36,14 +35,16 @@
                             <label for="login-password">Password</label>
                             <input type="password" id="login-password" required>
                         </div>
-                        <button type="submit" class="btn primary">Log In</button>
+                        <div class="form-group">
+                            <button type="submit" class="btn primary">Log In</button>
+                            <button type="button" id="to-signup" class="btn secondary">Need an account?</button>
+                        </div>
                     </form>
                 </div>
             </div>
 
             <div id="signup-modal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
                     <h2>Sign Up</h2>
                     <form id="signup-form">
                         <div class="form-group">
@@ -58,18 +59,16 @@
                             <label for="signup-password">Password</label>
                             <input type="password" id="signup-password" required>
                         </div>
-                        <button type="submit" class="btn primary">Sign Up</button>
+                        <div class="form-group">
+                            <button type="submit" class="btn primary">Sign Up</button>
+                            <button type="button" id="to-login" class="btn secondary">Already have an account?</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </main>
-
-        <footer>
-            <p>&copy; 2025 Emotional Echoes</p>
-        </footer>
     </div>
 
-    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

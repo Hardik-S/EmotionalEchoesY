@@ -1,22 +1,29 @@
 // Check if user is logged in
 function checkLogin() {
     const currentUser = localStorage.getItem('currentUser');
+    const path = window.location.pathname;
     
-    // If we're on the home page but not logged in, redirect to index
-    if (window.location.pathname.includes('home.html') && !currentUser) {
+    // Routing flow: Login -> Headspace -> Home
+    if (path.includes('index.html') && currentUser) {
+        window.location.href = 'headspace.html';
+        return;
+    }
+    
+    if (path.includes('headspace.html') && currentUser) {
+        // If on headspace and logged in, set up navigation
+        const echoes = document.getElementById('echoes-btn');
+        if (echoes) {
+            echoes.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            });
+        }
+        return;
+    }
+    
+    // Redirect to index if not logged in
+    if ((path.includes('headspace.html') || path.includes('home.html')) && !currentUser) {
         window.location.href = 'index.html';
         return;
-    }
-    
-    // If we're on index but already logged in, redirect to home
-    if (window.location.pathname.includes('index.html') && currentUser) {
-        window.location.href = 'home.html';
-        return;
-    }
-    
-    // If we're on home and logged in, set up the dashboard
-    if (window.location.pathname.includes('home.html') && currentUser) {
-        setupDashboard();
     }
 }
 
@@ -80,8 +87,8 @@ function setupIndexPage() {
                 // Set current user
                 localStorage.setItem('currentUser', username);
                 
-                // Redirect to home page
-                window.location.href = 'home.html';
+                // Redirect to headspace page
+                window.location.href = 'headspace.html';
             } else {
                 alert('Invalid username or password');
             }
@@ -119,8 +126,8 @@ function setupIndexPage() {
             const userEntries = [];
             localStorage.setItem(`mood_entries_${username}`, JSON.stringify(userEntries));
             
-            // Redirect to home page
-            window.location.href = 'home.html';
+            // Redirect to headspace page
+            window.location.href = 'headspace.html';
         });
     }
 }
@@ -440,37 +447,38 @@ function setupDashboard() {
         reminderCheck.addEventListener('click', () => {
             reminderElement.classList.remove('active');
             // Switch to mood check tab
-            tabBtns.forEach(btn => {
-                if (btn.getAttribute('data-tab') === 'mood-check') {
-                    btn.click();
-                }
+                tabBtns.forEach(btn => {
+                    if (btn.getAttribute('data-tab') === 'mood-check') {
+                        btn.click();
+                    }
+                });
             });
-        });
+        }
+        
+        if (reminderDismiss) {
+            reminderDismiss.addEventListener('click', () => {
+                reminderElement.classList.remove('active');
+            });
+        }
+        
+        // Populate meditation recommendations
+        const meditationList = document.getElementById('meditation-list');
+        if (meditationList) {
+            const recommendations = getMeditationRecommendations();
+            meditationList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+        }
+        
+        // Initial setup
+        updateTimeline();
+        generateInsights();
     }
     
-    if (reminderDismiss) {
-        reminderDismiss.addEventListener('click', () => {
-            reminderElement.classList.remove('active');
-        });
-    }
-    
-    // Populate meditation recommendations
-    const meditationList = document.getElementById('meditation-list');
-    if (meditationList) {
-        const recommendations = getMeditationRecommendations();
-        meditationList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
-    }
-    
-    // Initial setup
-    updateTimeline();
-    generateInsights();
-}
-
-// Initialize the page based on current location
-document.addEventListener('DOMContentLoaded', () => {
-    checkLogin();
-    
-    if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
-        setupIndexPage();
-    }
-});
+    // Initialize the page based on current location
+    document.addEventListener('DOMContentLoaded', () => {
+        checkLogin();
+        
+        if (window.location.pathname.includes('index.html') || 
+            window.location.pathname.endsWith('/')) {
+            setupIndexPage();
+        }
+    });
