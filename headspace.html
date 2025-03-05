@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headspace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container headspace-landing">
+        <header class="dashboard-header">
+            <div class="nav-icons">
+                <button class="btn small">History</button>
+                <button class="btn small">Home</button>
+            </div>
+            <button id="echoes-btn" class="btn small">Echoes 💕</button>
+        </header>
+
+        <main>
+            <h2>Good evening, Hardik</h2>
+            <h1>Start your day</h1>
+
+            <div class="activity-list">
+                <div class="activity-card">
+                    <div class="activity-details">
+                        <h3>Take 5 Deep Breaths</h3>
+                        <p>Mindful Activity • 1 min</p>
+                    </div>
+                    <button class="btn small">...</button>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-details">
+                        <h3>Letting Go of Expectations</h3>
+                        <p>The Wake Up • 3-7 min</p>
+                    </div>
+                    <button class="btn small">...</button>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-details">
+                        <h3>Letting Go</h3>
+                        <p>Today's Meditation • 3-20 min</p>
+                    </div>
+                    <button class="btn small">...</button>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-details">
+                        <h3>Prioritization</h3>
+                        <p>Course</p>
+                    </div>
+                    <button class="btn small">...</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="bottom-nav">
+                <button class="btn small">Today</button>
+                <button class="btn small">Explore</button>
+                <button class="btn small">Profile</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('echoes-btn').addEventListener('click', () => {
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+</html>

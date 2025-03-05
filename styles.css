@@ -578,3 +578,62 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+.headspace-landing {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.headspace-landing header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.headspace-landing .nav-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.headspace-landing main h2 {
+    font-size: 1rem;
+    color: var(--secondary-light);
+}
+
+.headspace-landing main h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-card {
+    background-color: #2A2E4E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.activity-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-details p {
+    font-size: 0.8rem;
+    color: var(--secondary-light);
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
