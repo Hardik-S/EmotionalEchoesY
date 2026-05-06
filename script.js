@@ -1,3 +1,7 @@
+function isIndexRoute(path) {
+    return path.includes('index.html') || path.endsWith('/');
+}
+
 // Check if user is logged in
 function checkLogin() {
     const currentUser = localStorage.getItem('currentUser');
@@ -5,7 +9,7 @@ function checkLogin() {
     setupDashboard();
     
     // Routing flow: Login -> Headspace -> Home
-    if (path.includes('index.html') && currentUser) {
+    if (isIndexRoute(path) && currentUser) {
         window.location.href = 'headspace.html';
         return;
     }
@@ -475,11 +479,10 @@ function setupDashboard() {
     }
     
     // Initialize the page based on current location
-    document.addEventListener('DOMContentLoaded', () => {
-        checkLogin();
-        
-        if (window.location.pathname.includes('index.html') || 
-            window.location.pathname.endsWith('/')) {
-            setupIndexPage();
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    checkLogin();
+
+    if (isIndexRoute(window.location.pathname)) {
+        setupIndexPage();
+    }
+});
