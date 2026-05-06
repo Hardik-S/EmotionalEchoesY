@@ -37,18 +37,41 @@ function setupIndexPage() {
     const closeBtns = document.querySelectorAll('.close');
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
+    const toSignupBtn = document.getElementById('to-signup');
+    const toLoginBtn = document.getElementById('to-login');
+
+    function showModal(modalToShow, modalToHide) {
+        if (modalToHide) {
+            modalToHide.classList.remove('active');
+        }
+        if (modalToShow) {
+            modalToShow.classList.add('active');
+        }
+    }
     
     // Open login modal
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
-            loginModal.classList.add('active');
+            showModal(loginModal, signupModal);
         });
     }
     
     // Open signup modal
     if (signupBtn) {
         signupBtn.addEventListener('click', () => {
-            signupModal.classList.add('active');
+            showModal(signupModal, loginModal);
+        });
+    }
+
+    if (toSignupBtn) {
+        toSignupBtn.addEventListener('click', () => {
+            showModal(signupModal, loginModal);
+        });
+    }
+
+    if (toLoginBtn) {
+        toLoginBtn.addEventListener('click', () => {
+            showModal(loginModal, signupModal);
         });
     }
     
